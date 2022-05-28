@@ -1,0 +1,10 @@
+import os
+
+def say_hi(imp: str) {
+    if imp == 'yes':
+        print('hi')
+}
+
+hi = os.getenv('hi', 'no')
+
+say_hi(hi)

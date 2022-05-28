@@ -1,5 +1,4 @@
-test.py
+devtests/
 __pycache__/
-target/
 .cachedir
 *.ll

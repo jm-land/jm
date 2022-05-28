@@ -1,4 +1,5 @@
-metro std::os
+import os
 
-prod = os::getenv("prod", "false")
-print(prod)
+# gets and prints the environment variable "hi"
+hi = os.getenv('hi', 'no')
+print(hi)

@@ -1,5 +1,2 @@
-y = 'x' // also works with "x" in the same fashion.
-
-def main() {
-    print!(y)
-}
+# prints "hello" into the console
+print('hello!')

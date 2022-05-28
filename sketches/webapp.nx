@@ -1,0 +1,6 @@
+import http
+
+client = http.Client(base_url='https://httpbin.org')
+
+r = client.get('/')
+print(r.text()) # Returns String Representation of the returned Data.

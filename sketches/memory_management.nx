@@ -1,0 +1,16 @@
+import os
+from memory import delobj
+
+mystr = 'hi, world!'
+
+delobj(mystr)
+
+print(mystr) # raises error as object has been removed
+
+import collector
+
+# let the garbage collection module handle memory management. NOTE: optional and turned off by default.
+collector.enable()
+
+# deleted on program exit.
+myobj = ''

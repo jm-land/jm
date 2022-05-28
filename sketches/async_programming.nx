@@ -1,0 +1,10 @@
+import myasyncmanager
+from myasyncmodule import anotherasyncfunction
+
+async def myasyncfunction() {
+    # runs another async function
+    await anotherasyncfunction()
+}
+
+# gives the Future to the async manager to handle and run.
+myasyncmanager.run(myasyncfunction())
