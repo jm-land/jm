@@ -1,10 +1,49 @@
 import os
 
-def say_hi(imp: str) {
-    if imp == 'yes':
-        print('hi')
+classtype MyClassType {
+    def is_class(): bool
+    def my_class(cls: any): bool
 }
 
-hi = os.getenv('hi', 'no')
+functiontype MyFunctionType {
+    returns bool
+    args {
+        text: str
+    }
+}
+
+class MyClass {
+    typing MyClassType
+
+    def is_class {
+        return True
+    }
+
+    def my_class(cls) {
+        return False
+    }
+
+    def print(text): MyFunctionType {
+        print(text)
+    }
+}
+
+def prints() {
+    print('printed')
+}
+
+functiontype PrintsType {
+    returns None
+}
+
+assigntype(prints, PrintsType)
+
+def say_hi(imp: str): None {
+    if imp == 'yes' {
+        print('hi')
+    }
+}
+
+hi = input('hi')
 
 say_hi(hi)

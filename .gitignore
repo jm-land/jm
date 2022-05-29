@@ -2,3 +2,4 @@ devtests/
 __pycache__/
 .cachedir
 *.ll
+dist/
