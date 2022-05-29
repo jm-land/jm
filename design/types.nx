@@ -1,42 +1,14 @@
 import os
 
-classtype MyClassType {
-    def is_class(): bool
-    def my_class(cls: any): bool
-}
-
-functiontype MyFunctionType {
-    returns bool
-    args {
-        text: str
-    }
-}
-
 class MyClass {
-    typing MyClassType
-
-    def is_class {
+    def __init__(): None {}
+    def is_class(): bool {
         return True
     }
-
-    def my_class(cls) {
+    def my_class(): bool {
         return False
     }
-
-    def print(text): MyFunctionType {
-        print(text)
-    }
 }
-
-def prints() {
-    print('printed')
-}
-
-functiontype PrintsType {
-    returns None
-}
-
-assigntype(prints, PrintsType)
 
 def say_hi(imp: str): None {
     if imp == 'yes' {
@@ -44,6 +16,10 @@ def say_hi(imp: str): None {
     }
 }
 
-hi = input('hi')
+def prints(): None {
+    print('printed')
+}
+
+hi: str = input('hi')
 
 say_hi(hi)
