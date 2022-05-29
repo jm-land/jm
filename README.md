@@ -1,6 +1,6 @@
 # Next
 
-Official Implementation of the Next Programming Language.
+This is the Source Code for nextc (the next compiler), parcel (the next package manager), and nextup (the next module manager).
 
 ## Building
 
@@ -12,4 +12,3 @@ Currently, Next is in full design-mode. We dont expect to currently pick up user
 
 ## Some Notes
 In the current state, we don't recommend using the language for anything but testing. it is unstable, non-finished and lacking support for some features, i.e. Asynchronus Programming, Memory Management, Networking, etc,
-
