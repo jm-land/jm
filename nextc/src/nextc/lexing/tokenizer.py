@@ -21,8 +21,10 @@
 # SOFTWARE.
 from dataclasses import dataclass
 from typing import List
+
 from .errors import BadToken
-from .token import TOKEN_KINDS, Token, WORDS
+from .token import TOKEN_KINDS, WORDS, Token
+
 
 @dataclass
 class Tokenizer:
@@ -43,8 +45,15 @@ class Tokenizer:
                 TOKENS.append(Token('Indent'))
                 continue
 
-            if tk not in TOKEN_KINDS_RAW and tk not in WORDS and tk not in WORDS.upper() and tk not in '; \n'.split(' '):
-                raise BadToken(f'Token "{tk}" in file {self.filename} is not supported.')
+            if (
+                tk not in TOKEN_KINDS_RAW
+                and tk not in WORDS
+                and tk not in WORDS.upper()
+                and tk not in '; \n'.split(' ')
+            ):
+                raise BadToken(
+                    f'Token "{tk}" in file {self.filename} is not supported.'
+                )
 
             if tk in WORDS or tk in WORDS.upper():
                 TOKENS.append(Token('Word', tk))

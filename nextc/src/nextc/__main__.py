@@ -7,6 +7,7 @@ import rply
 from . import __version__
 from .lexing import Tokenizer
 
+
 # TODO: Compile Command
 @click.group()
 @click.version_option(
@@ -18,6 +19,7 @@ from .lexing import Tokenizer
 def cli():
     pass
 
+
 @cli.command('lex')
 @click.option('-f', '--file', 'file', required=True, help='The File to Lex')
 def lex_code(file: str):
@@ -26,6 +28,7 @@ def lex_code(file: str):
         tokenizer = Tokenizer(code=buffer, filename=file)
         tokens = tokenizer.start()
         print(str(tokens), file=sys.stderr)
+
 
 if __name__ == '__main__':
     cli()

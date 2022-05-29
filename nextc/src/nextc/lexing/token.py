@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import dataclasses
-from typing import Dict, Union, Optional
+from typing import Dict, Optional, Union
 
 WORDS = 'abcdefghijklmnopqrstuvwxyz'
 
@@ -50,8 +50,9 @@ TOKEN_KINDS: Dict[str, Dict[str, Union[bool, str]]] = {
     'Percent': {'multi-line': False, 'letter': '%'},
     'WhiteSpace': {'multi-line': False, 'letter': ' '},
     'SingleQuote': {'multi-line': False, 'letter': "'"},
-    'DoubleQuote': {'multi-line': False, 'letter': '"'}, 
+    'DoubleQuote': {'multi-line': False, 'letter': '"'},
 }
+
 
 @dataclasses.dataclass
 class Token:
