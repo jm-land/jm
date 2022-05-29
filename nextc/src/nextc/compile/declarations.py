@@ -13,7 +13,10 @@
 # limitations under the License.
 
 from typing import Any
-from llvmlite import ir, binding as _binding
+
+from llvmlite import binding as _binding
+from llvmlite import ir
+
 
 class Delarator:
     def __init__(self, module: ir.Module, binding: _binding):

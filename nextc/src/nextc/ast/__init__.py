@@ -20,24 +20,37 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# TODO: Rewrite
-import rply
-from ..ast import Print, Integer
-from ..lexing import listed
-from ..compile import Configurator
+from llvmlite import ir
 
-class Parser:
-    def __init__(self, ir: Configurator):
-        self._parser = rply.ParserGenerator(listed)
-        self.ir = ir
+from ..compile import core as ir_core
 
-    def start(self):
-        @self._parser.production('program : PRINT OPEN_PAREN expression CLOSE_PAREN')
-        def print_(p):
-            return Print(self.ir, p[2])
-        @self._parser.production('expression : INTEGER')
-        def integer(p):
-            return Integer(self.ir, p[0].value)
 
-    def build(self):
-        return self._parser.build()
+class Print:
+    def __init__(self, ir_core: ir_core.Configurator, value):
+        self.ir = ir_core
+        self.value = value
+
+    def eval(self):
+        val = self.value.eval()
+
+        voidptr_type = ir.IntType(8).as_pointer()
+        fmt = '%i \n\0'
+        c_fmt = ir.Constant(
+            ir.ArrayType(ir.IntType(8), len(fmt)), bytearray(fmt.encode('utf8'))
+        )
+        global_fmt = ir.GlobalVariable(self.ir.module, c_fmt.type, 'fstr')
+        global_fmt.linkage = 'internal'
+        global_fmt.global_constant = True
+        global_fmt.initializer = c_fmt
+        fmt_arg = self.ir.builder.bitcast(global_fmt, voidptr_type)
+
+        self.ir.builder.call(self.ir._funcs.print, [fmt_arg, val])
+
+
+class Integer:
+    def __init__(self, ir_core: ir_core.Configurator, value: str):
+        self.ir = ir_core
+        self.value = value
+
+    def eval(self):
+        return ir.Constant(ir.IntType(len(self.value)), int(self.value))

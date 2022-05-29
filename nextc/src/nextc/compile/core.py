@@ -12,8 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import os
-from llvmlite import ir, binding
+
+from llvmlite import binding, ir
+
 from .declarations import Delarator
+
 
 class Configurator:
     def __init__(self):

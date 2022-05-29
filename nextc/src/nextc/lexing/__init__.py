@@ -88,5 +88,5 @@ listed = [
     'CLOSE_PAREN',
     'OPEN_FN',
     'CLOSE_FN',
-    'INDENT'
+    'INDENT',
 ]

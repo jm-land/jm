@@ -1,2 +1,2 @@
-from .declarations import *
 from .core import *
+from .declarations import *
