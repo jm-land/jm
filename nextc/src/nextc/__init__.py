@@ -4,7 +4,7 @@ nextc
 Next Compiler
 """
 
-__version__: str = '0.1'
+__version__: str = '0.2'
 
 from .ast import *
 from .lexing import *
