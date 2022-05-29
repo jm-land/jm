@@ -19,28 +19,3 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-# TODO: Rewrite
-import rply
-
-from ..ast import Integer, Print
-from ..compile import Configurator
-from ..lexing import listed
-
-
-class Parser:
-    def __init__(self, ir: Configurator):
-        self._parser = rply.ParserGenerator(listed)
-        self.ir = ir
-
-    def start(self):
-        @self._parser.production('program : PRINT OPEN_PAREN expression CLOSE_PAREN')
-        def print_(p):
-            return Print(self.ir, p[2])
-
-        @self._parser.production('expression : INTEGER')
-        def integer(p):
-            return Integer(self.ir, p[0].value)
-
-    def build(self):
-        return self._parser.build()

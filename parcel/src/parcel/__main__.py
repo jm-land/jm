@@ -10,9 +10,9 @@ import nextc
     '-v',
     message=f'parcel: %(version)s\nnextc: {nextc.__version__}',
 )
-def version():
+def cli():
     pass
 
 
 if __name__ == '__main__':
-    version()
+    cli()
